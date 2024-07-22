@@ -4,8 +4,8 @@ const cors = require('cors');
 const express = require('express')
 
 const app = express();
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 const home = require('./src/routes/home') //라우팅
@@ -16,3 +16,5 @@ app.set("view engine", "ejs"); //html 코드의 확장명
 app.use(express.static(`${__dirname}/src/public`));
 
 module.exports = app;
+
+//mvp 계층 : model / view / controller
