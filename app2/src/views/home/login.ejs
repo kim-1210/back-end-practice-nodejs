@@ -4,16 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link rel="stylesheet" href="/css/home/login_css.css">
     <script src="/js/home/login.js" defer></script>
     <title>Document</title>
 </head>
 
-<body>
-    <h1 id="result">로그인 중 </h1>
-    <input type="text" placeholder="아이디" id="id"> <br>
-    <input type="text" placeholder="비밀번호" id="pw"> <br> <br>
-    <button id="login">로그인</button>
+<body class="align">
+    <div class="login">
+        <h1>Login</h1>
+        <h2 id="result">...</h2>
+        <input type="text" name="u" placeholder="Username" required="required" id="login__username" />
+        <input type="password" name="p" placeholder="Password" required="required" id="login__password" />
+        <button type="submit" class="btn btn-primary btn-block btn-large" id="loginbtn">Let me in.</button>
+        <span><a href="/register" style="color: white;">_register_</a></span>
+    </div>
 </body>
 
 </html>
+
+
+<!--Copyright (c) 2024 by Marco Biedermann (https://codepen.io/marcobiedermann/pen/nbpKWV) -->

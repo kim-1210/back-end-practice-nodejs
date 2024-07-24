@@ -1,8 +1,8 @@
 "use strict";
 
-const id = document.querySelector("#id"),
-pw = document.querySelector('#pw'),
-loginbtn = document.querySelector('#login');
+const id = document.querySelector("#login__username"),
+pw = document.querySelector('#login__password'),
+loginbtn = document.querySelector('#loginbtn');
 
 loginbtn.addEventListener('click', login);
 
@@ -25,7 +25,8 @@ function login(){
     })
     .then((data) =>{
         document.querySelector('#result').textContent = data.message;
-        setTimeout(1000);
+        console.log(data)
+        setTimeout(2000);
         if(data.result){
             location.href = '/after_login';
         }

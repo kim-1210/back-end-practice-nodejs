@@ -9,13 +9,21 @@ const show = {
     after_login : (req, res) =>{
         res.render('home/next')
     },
+    register : (req, res) =>{
+        res.render('home/register')
+    },
 }
 
 const func = {
-    login_check : (req, res) => {
+    login_check : async (req, res) => {
         const user_func = new Userfunc(req.body);
-        res.json(user_func.login())
+        return res.json(await user_func.login())
     },
+    register_save : async (req, res) =>{
+        const user_func = new Userfunc(req.body);
+        var result = await user_func.setUser()
+        return res.json(result);
+    }
 }
 
 
