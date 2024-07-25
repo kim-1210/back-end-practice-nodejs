@@ -1,38 +1,41 @@
 "use strict";
 
 const { error } = require('console');
+const mysql = require('mysql2');
+const connection = mysql.createConnection({
+    host : 'localhost',
+    user : 'node_user',
+    password : '12344',
+    database : 'userDB'
+});
 
-const fs = require('fs').promises;
+connection.connect();
 
 class UserStorage {
 
-    static getUsers(...fields) {
-        return fs.readFile('src/databases/userDB/users.json')
-            .then((data) => {
-                const users = JSON.parse(data);
-                console.log('확인 : ', users);
-                const newUsers = fields.reduce((newUsers, field) => {
-                    if (users.hasOwnProperty(field)) {
-                        newUsers[field] = users[field];
-                    }
-                    return newUsers;
-                }, {});
-                return newUsers;
-            })
-            .catch((error) => console.log('error : ' + error))
+    static getUsers(data) {
+        return new Promise((resolve, reject) => {
+            connection.query(`SELECT * FROM user_info WHERE ID = ? AND PW = ?`, [data.id, data.pw], (error, rows, fields) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    console.log('결과 : ', rows);
+                    resolve(rows);
+                }
+            });
+        });
     }
 
     static setUser(input_data) {
-        return fs.readFile('src/databases/userDB/users.json')
-            .then((data) => {
-                const users = JSON.parse(data);
-                users['id'].push(input_data.id);
-                users['pw'].push(input_data.pw);
-                fs.writeFile('src/databases/userDB/users.json', JSON.stringify(users))
-                console.log('추가 : ', users);
-                return { result: true, message: '저장되었습니다.' }
-            })
-            .catch((error) => console.log('error : ' + error))
+        return new Promise((resolve, reject) => {
+            connection.query(`INSERT INTO user_info (ID, PW) VALUES (?, ?)`, [input_data.id, input_data.pw], (error, results) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve({ result: true, message: '회원가입 되셨습니다.' });
+                }
+            });
+        });
     }
 }
 
