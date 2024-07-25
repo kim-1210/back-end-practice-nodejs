@@ -42,3 +42,10 @@
     - 로그인 및 회원가입 페이지 변환
       - (출처 : 회원가입 페이지 : Copyright (c) 2024 by afirulaf (https://codepen.io/afirulaf/pen/ExgKpJ))
       - (출처 : 로그인 페이지 : Copyright (c) 2024 by Marco Biedermann (https://codepen.io/marcobiedermann/pen/nbpKWV))
+
+-----------------------------------------------------------------------------------------
+
+## 4차:
+- (mysql)DB연결
+  - UserStorage.js에 임시 json대신 mysql을 연동하여 로그인 구현
+  ![alt text](image.png)
