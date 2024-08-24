@@ -1,51 +1,48 @@
-# back-end-practice
-### 연습 출처 : https://www.youtube.com/watch?v=2jwnbZKc66E&list=PLSK4WsJ8JS4cQ-niGNum4bkK_THHOizTs&index=1
+# Back-End Practice
 
-## 1차:
+이 프로젝트는 백엔드 개발 연습을 목적으로 진행되었습니다. 주요 작업은 MVC 패턴의 구현, 프론트엔드와 백엔드 로그인 시스템 구축, 회원가입 페이지 작성 및 DB 연결 등을 포함합니다.
 
-- MVC 중 V(View)와 C(Controller) 분리
-  - function을 home.ctrl을 이용하여 index.js에 가져와 C 이용
-- server 실행 위치와 view의 생성 위치를 분리
-- server 선언 및 설정과 server의 listen을 분리
+## 프로젝트 구조
 
-### 구조 설명:
-
-- **bin** 파일: 서버의 listen 관련 코드
-- **public** 파일: view에서의 기능
-- **routes** 파일: view에서 응답을 보내면 각 응답 위치당 서버에서 이루어질 기능을 정의
-- **view** 파일: 사용자가 보는 view (프론트엔드)
+- **bin/**: 서버의 `listen` 관련 코드
+- **public/**: 프론트엔드에서 사용하는 정적 파일
+- **routes/**: 각 요청에 대해 처리할 서버 기능 정의
+- **view/**: 사용자가 보는 프론트엔드 페이지
 - **app.js**: 서버 설정 및 선언
 
------------------------------------------------------------------------------------------
+## 작업 내역
 
-## 2차:
+### 1차: MVC 패턴 구현
 
-- 프론트와 백엔드 로그인 시스템 구현
-  - 프론트
-    - id와 pw 칸과 버튼을 제작
-    - login.js를 통해 fetch 통신을 이용하여 백엔드로 id와 pw의 값을 전송
-  - 백엔드
-    - models를 따로 분리하여 통신으로 받은 값을 이용하여 login 인가 기능 제작
-    - 하드코딩으로 한 저장소를 UserStorage.js에서 class를 이용하여 제작 
-  
------------------------------------------------------------------------------------------
+- **View**와 **Controller** 분리
+  - `home.ctrl`을 이용해 `index.js`에서 Controller 기능 구현
+- 서버 실행 위치와 View의 생성 위치 분리
+- 서버 선언 및 설정 코드와 `server.listen` 코드 분리
 
-## 3차:
-- 회원가입 페이지 작성 및 유사DB 구현
-  - 백엔드
-    - 회원가입을 위한 route연결 및 회원가입 기능 제작
-      - (회원가입 기능 : DB 저장 및 ID동일성 체크)
-    - JSON으로 유사 DB 구현 (Feature : ID, PW)
-  - 프론트엔드
-    - 회원가입 페이지 생성 (ID와 PW)
-    - 회원가입 시 쳇 페이지 로드 
-    - 로그인 및 회원가입 페이지 변환
-      - (출처 : 회원가입 페이지 : Copyright (c) 2024 by afirulaf (https://codepen.io/afirulaf/pen/ExgKpJ))
-      - (출처 : 로그인 페이지 : Copyright (c) 2024 by Marco Biedermann (https://codepen.io/marcobiedermann/pen/nbpKWV))
+### 2차: 로그인 시스템 구현
 
------------------------------------------------------------------------------------------
+- **프론트엔드**
+  - 로그인 페이지에서 ID와 PW 입력 필드 및 버튼 생성
+  - `login.js`를 통해 `fetch` API를 이용해 백엔드로 ID와 PW 값 전송
 
-## 4차:
-- (mysql)DB연결
-  - UserStorage.js에 임시 json대신 mysql을 연동하여 로그인 구현
-  ![alt text](image.png)
+- **백엔드**
+  - `models`를 분리하여 로그인 인증 기능 구현
+  - `UserStorage.js`에서 하드코딩된 사용자 데이터를 클래스를 이용해 저장소 구현
+
+### 3차: 회원가입 페이지 작성 및 유사 DB 구현
+
+- **백엔드**
+  - 회원가입을 위한 라우트 연결 및 기능 구현
+    - (회원가입 기능: DB에 저장 및 ID 중복 체크)
+  - JSON 파일을 이용한 유사 DB 구현 (ID, PW 정보 포함)
+
+- **프론트엔드**
+  - 회원가입 페이지 생성 (ID와 PW 입력 필드 포함)
+  - 회원가입 후 채팅 페이지 로드
+  - 로그인 페이지와 회원가입 페이지 간의 변환 기능 구현
+    - (회원가입 페이지 디자인 출처: [afirulaf](https://codepen.io/afirulaf/pen/ExgKpJ))
+    - (로그인 페이지 디자인 출처: [Marco Biedermann](https://codepen.io/marcobiedermann/pen/nbpKWV))
+
+### 4차: MySQL DB 연결
+
+- `UserStorage.js`에서 기존의 JSON 데이터를 MySQL 데이터베이스로 대체하여 로그인 기능 구현
